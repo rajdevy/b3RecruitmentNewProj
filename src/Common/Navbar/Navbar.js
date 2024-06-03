@@ -7,7 +7,7 @@ import DropDownMenu from "./DropdownMenu";
 const Wrapper = styled.nav`
   height: 4rem;
   display: flex;
-  align-items: center;
+  align-items: center; 
   justify-content: center;
   box-shadow: 0 1px 0px 0px rgba(0, 0, 0, 0.1);
   z-index: 2;

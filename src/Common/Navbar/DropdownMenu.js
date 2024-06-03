@@ -9,7 +9,7 @@ import { UserData } from "../../Util/session";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 export default function DropDownMenu() {
-
+ 
     const clearnfo=()=>{
         sessionStorage.removeItem("recruiter-details");
     }

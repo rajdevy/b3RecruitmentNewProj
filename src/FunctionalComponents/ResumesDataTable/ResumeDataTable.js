@@ -730,7 +730,7 @@ const ResumeDataTable = (props) => {
               {/* <hr style={{ width: "105vw" }} /> */}
               <TblPagination />
             
-            </div>
+            </div> 
             {/* <PopupComp
               title="Download Resume"
               openPopup={openPopup}

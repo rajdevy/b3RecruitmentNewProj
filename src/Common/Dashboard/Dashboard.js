@@ -27,13 +27,13 @@ function Dashboard() {
             <StatsContainer />
           </div>
           <div className="divTwo">
-            <Chart />
+            <Chart /> 
           </div>
           </div>
           </div>
           </MainLayout>
     //     </div>
-    //   </div>
+    //   </div> 
     // </div>
   );
 }

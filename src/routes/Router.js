@@ -24,7 +24,7 @@ function Router() {
       <Route path="/add-new-resume" element={<AddNewResume />} />
       <Route path="/change-password" element={<ChangePassword />} />
 
-    </Routes>
+    </Routes> 
   );
 }
 

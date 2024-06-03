@@ -136,10 +136,10 @@ const CreatePassword = ({ setStep, setIsLogin }) => {
 {
   errorMessage && (
     <p
-      className="text-red-500 text-xs mb-4"
+      className="text-red-500 text-xs mb-4" 
       dangerouslySetInnerHTML={{ __html: errorMessage }}
     />
-  )
+  ) 
 }
 <div className="flex justify-center mt-5">
   <Button variant="outlined" style={{ backgroundColor: '#2F68C4', color: 'white' }} type="submit">
