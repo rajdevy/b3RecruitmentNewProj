@@ -1,0 +1,22 @@
+.resume-modal{
+    display: flex;
+    height: auto;
+    width: 300px;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 20px;
+}
+.modal-image{
+    border-right: 1px solid;
+    padding-right: 30px;
+}
+
+.modal-image>img{
+    width: 100px; 
+    height: 100px;
+   
+}
+
+.modal-image >img:hover{
+    cursor: pointer;
+}

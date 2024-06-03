@@ -1,0 +1,32 @@
+.resume-image{
+    height: 30px;
+    width: 30px;
+}
+
+/* .resume-image:hover{
+   
+    display: block;
+    position: fixed;
+    transform: scale(20);
+    right: 50%;
+    bottom: 50%;
+} */
+
+.tbl-filtered {
+    margin-top: 10px;
+    border-collapse: collapse;
+    text-align: left;  
+    }
+
+.tbl-data{
+    color: black;
+    font-weight: 100;
+    /* background-color: #647acb; */
+
+ }
+.tbl-filtered-row{
+    /* background-color: #647acb; */
+    /* color: white; */
+    white-space: nowrap;
+    padding: 0px 10px 0px 5px !important;
+}
