@@ -380,12 +380,12 @@ const ResumeDataTable = (props) => {
   return (
     <>
       {disableTable ? (
-        <div style={{ height: "300px" , marginTop:'-20px' }}>
+        <div className="bg-white p-10 m-10 rounded-md" style={{ boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2)' }}>
           <Form
             onSubmit={handleSubmit}
             style={{ width: "100%", height: "auto" }}
           >
-            <Grid container style={{ marginLeft: "-40px", marginTop: "20px", width:1000 }}>
+            <Grid container style={{ marginTop: "20px", width:1000 }}>
               <Grid item xs={3}>
                 <InputControl
                   label="First Name"

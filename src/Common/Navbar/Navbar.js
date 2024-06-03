@@ -1,11 +1,8 @@
-// import MenuIcon from "@mui/icons-material/Menu";
-import ArrowDropDownOutlinedIcon from "@mui/icons-material/ArrowDropDownOutlined";
-import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import { useState } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import { UserData } from "../../Util/session";
 import { ENUM_USERTYPE } from "../../Util/Enums";
+import DropDownMenu from "./DropdownMenu";
 
 const Wrapper = styled.nav`
   height: 4rem;
@@ -21,7 +18,7 @@ const Wrapper = styled.nav`
     justify-content: space-between;
   }
   .toggle-btn {
-    background: transparent;
+    // background: transparent;
     border-color: transparent;
     font-size: 2rem;
     color: #3b82f6;
@@ -29,56 +26,56 @@ const Wrapper = styled.nav`
     display: flex;
     align-items: center;
   }
-  background: #f0f0f0;
+  // background: #f0f0f0;
   .btn-container {
     position: relative;
     margin-right: 10px;
   }
-  .btn {
-    height: 38px;
-    border-radius: 5px;
-    justify-content: center;
-    padding: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0 1rem;
-    position: relative;
-    background: #1976d2;
-    color: #f0f0f0;
-    font-weight: bold;
-    border: transparent;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-      0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  }
-  .dropdown {
-    position: absolute;
-    height: 40px;
-    top: 40px;
-    left: 0;
-    color: #3b82f6;
-    width: 100%;
-    background: #dbeafe;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-      0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    padding: 0.5rem;
-    text-align: center;
-    visibility: hidden;
-    border-radius: 0.25rem;
-  }
-  .show-dropdown {
-    visibility: visible;
-  }
-  .dropdown-btn {
-    background: transparent;
-    border-color: transparent;
-    color: #3b82f6;
-    letter-spacing: 1px;
-    text-transform: capitalize;
-    cursor: pointer;
-    z-index: 1;
-    margin-right: 10px;
-  }
+  // .btn {
+  //   height: 38px;
+  //   border-radius: 5px;
+  //   justify-content: center;
+  //   padding: 5px;
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  //   gap: 0 1rem;
+  //   position: relative;
+  //   background: #1976d2;
+  //   color: #f0f0f0;
+  //   font-weight: bold;
+  //   border: transparent;
+  //   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+  //     0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  // }
+  // .dropdown {
+  //   position: absolute;
+  //   height: 40px;
+  //   top: 40px;
+  //   left: 0;
+  //   color: #3b82f6;
+  //   width: 100%;
+  //   background: #dbeafe;
+  //   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+  //     0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  //   padding: 0.5rem;
+  //   text-align: center;
+  //   visibility: hidden;
+  //   border-radius: 0.25rem;
+  // }
+  // .show-dropdown {
+  //   visibility: visible;
+  // }
+  // .dropdown-btn {
+  //   background: transparent;
+  //   border-color: transparent;
+  //   color: #3b82f6;
+  //   letter-spacing: 1px;
+  //   text-transform: capitalize;
+  //   cursor: pointer;
+  //   z-index: 1;
+  //   margin-right: 10px;
+  // }
   .logo-text {
     display: none;
     color: #1976d2;
@@ -138,44 +135,36 @@ const Navbar = (props) => {
   const UserName =
     UserNameInitial + " (" + ENUM_USERTYPE[UserData.UserType] + ")";
 
+    const [changePassword,setChangePassword]=useState(false);
+    const onChangePassword=()=>{
+      console.log("hjghjd")
+      setChangePassword(true);
+     
+      // setShowLogout(false)
+     }
+
   return (
-    <Wrapper>
-      <div className="nav-center">
-        {/* <button type="button" className="toggle-btn" onClick={toggle}>
-          <MenuIcon />
-        </button> */}
+    <div className="" style={{ backgroundColor: "red",color:"#0060B5" }} >
+      <div 
+        className="bg-white flex w-[100%]  justify-between items-center px-5" style={{ boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2)' }}
+      >
         <div>
-          <Link to="/dashboard">
-            <h3 className="logo-text">{navHeader}</h3>
-          </Link>
+          {/* <Link to="/dashboard"> */}
+            <h3 className="items-center font-bold text-2xl ">{navHeader}</h3>
+          {/* </Link> */}
         </div>
-        <div className="btn-container">
-          <button
-            type="button"
-            className="btn"
-            onClick={() => setShowLogout(!showLogout)}
-          >
-            <AccountCircleOutlinedIcon />
-            {UserName}
-            <ArrowDropDownOutlinedIcon />
-          </button>
-          <div className={showLogout ? "dropdown show-dropdown" : "dropdown"}>
-            <button
-              type="button"
-              className="dropdown-btn"
-              onClick={logoutHandler}
-            >
-              <Link
-                style={{ position: "absolute", margin: "-32px 0px 0px -20px" }}
-                to="/login"
-              >
-                Logout
-              </Link>
-            </button>
-          </div>
+        <div className="">
+          <DropDownMenu/>
         </div>
       </div>
-    </Wrapper>
+      </div>
   );
 };
 export default Navbar;
+
+
+
+
+
+
+

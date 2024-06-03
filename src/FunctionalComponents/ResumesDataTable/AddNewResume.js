@@ -35,8 +35,8 @@ import PDFReader from "../../components/PdfViewer";
 const useStyles = makeStyles(() => ({
   btnControls: {
     height: "30px",
-    width:"auto",
-    padding:"10px",
+    width: "auto",
+    padding: "10px",
     top: "15px",
     left: "10px !important",
   },
@@ -203,8 +203,8 @@ function AddNewResume() {
   const handleSubmit = async (e) => {
     alert('hello')
     e.preventDefault();
-console.log("submit wrong1")
-console.log(values)
+    console.log("submit wrong1")
+    console.log(values)
 
     //gender validation 
     // if (values.Gender === "1") {
@@ -225,8 +225,8 @@ console.log(values)
           Skills: recordForEdit.SkillID,
         })
 
-console.log(values);
-console.log("submit success1")
+        console.log(values);
+        console.log("submit success1")
         // await axios.put(`Resumes/${id}`, values).then((res) => {
         //   alert("Updated Successfully");
         //   window.location.href = "/resumes";
@@ -249,7 +249,7 @@ console.log("submit success1")
       }
       resetForm();
     }
-    else{
+    else {
       console.log("submit wrong4")
     }
   };
@@ -360,9 +360,9 @@ console.log("submit success1")
     setIsEmailError(false);
     setIsErrors({ ...isErrors, Email: "" });
   }
-  
+
   const handleEmailInputChange = (event) => {
-handleInputChange(event);
+    handleInputChange(event);
     const input = event.target.value;
     const emailRegex = /^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$/;
 
@@ -396,76 +396,47 @@ handleInputChange(event);
   //code end by GS
 
   return (
-    // <div className="dashboard">
-    //   <div className="glass">
-    //     <Sidebar className="sidebar" />
-    //     <div className="dashboard-content">
-    //       <div>
-    //         {recordForEdit == null ? (
-    //           <Navbar navHeader="Add Resume" />
-    //         ) : (
-    //           <Navbar navHeader="Update Resume" />
-    //         )}
-    //       </div>
     <MainLayout selectedOption='4' navbarHeaderContent={recordForEdit == null ? "Add Resume" : "Update Resume"} >
 
-      <div style={{ overflow: "auto", marginTop: '-20px' }} >
+      <div className="bg-white scale-95 px-10 py-3 mx-10 h-full rounded-md overflow-auto" style={{ boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2)' }}
+      >
         <Form
           onSubmit={handleSubmit}
-        // style={{ width: "100%", height: "auto" ,paddingTop:'20px'}}
+          className="flex flex-col md:flex-row justify-around"
         >
-          <Grid container style={{ width: 1100}} >
-            <Grid item xs={4}  >
-              <Grid container>
-                <Grid item xs={6}>
-                  <InputControl
-                    label="First Name"
-                    name="FirstName"
-                    size="small"
-                    value={values.FirstName || ""}
-                    error={errors.FirstName}
-                    onChange={handleInputChange}
-                    variant="standard"
-                    color="primary"
-                    InputLabelProps={{
-                      style: { color: '#0d47a1' }
-                    }}
-                  />
-                </Grid>
-                <Grid item xs={6}>
-                  <InputControl
-                    label="Last Name"
-                    name="LastName"
-                    size="small"
-                    value={values.LastName || ""}
-                    error={errors.LastName}
-                    onChange={handleInputChange}
-                    variant="standard"
-                    color="primary"
-                    InputLabelProps={{
-                      style: { color: '#0d47a1' }
-                    }}
-                  />
-                </Grid>
-              </Grid>
-              {/* <InputControl
-                name="Email"
-                label="Email"
+          <div className="">
+            <div className="flex gap-2">
+              <InputControl
+                label="First Name"
+                name="FirstName"
                 size="small"
-                style={{ width: "95%" }}
-                error={errors.Email}
-                value={values.Email || ""}
+                value={values.FirstName || ""}
+                error={errors.FirstName}
                 onChange={handleInputChange}
                 variant="standard"
                 color="primary"
                 InputLabelProps={{
                   style: { color: '#0d47a1' }
                 }}
-              /> */}
+              />
+              <InputControl
+                label="Last Name"
+                name="LastName"
+                size="small"
+                value={values.LastName || ""}
+                error={errors.LastName}
+                onChange={handleInputChange}
+                variant="standard"
+                color="primary"
+                InputLabelProps={{
+                  style: { color: '#0d47a1' }
+                }}
+              />
+            </div>
 
 
-              {/* code strt by GS */}
-
+            {/* code strt by GS */}
+            <div className="flex gap-2">
               <InputControl
                 name="Email"
                 label="Email"
@@ -479,8 +450,7 @@ handleInputChange(event);
                 onChange={handleEmailInputChange}
                 id="txtemail"
                 value={email}
-               error={errors.Email}
-                //error={isEmailError}
+                error={errors.Email}
                 inputProps={{ Autocomplete: "auto" }}
                 lable="Error"
               />
@@ -504,329 +474,278 @@ handleInputChange(event);
               {/* code end by GS */}
 
 
-              <Grid container>
-                <Grid item xs={6}>
-                  <InputControl
-                    name="MobileNumber"
-                    label="Mobile Number"
-                    size="small"
-                    error={errors.MobileNumber}
-                    value={values.MobileNumber || ""}
-                    onChange={handleInputChange}
-                    variant="standard"
-                    color="primary"
-                    InputLabelProps={{
-                      style: { color: '#0d47a1' }
-                    }}
-                    inputProps={{
-                      maxLength: 10 // Set maxLength attribute to 2
-                    }}
-                  />
-                </Grid>
-                <Grid item xs={6}>
-                  <InputControl
-                    name="Experience"
-                    label="Experience"
-                    error={errors.Experience}
-                    size="small"
-                    value={values.Experience || ""}
-                    onChange={handleInputChange}
-                    variant="standard"
-                    color="primary"
-                    inputProps={{
-                      maxLength: 2 // Set maxLength attribute to 2
-                    }}
-                    InputLabelProps={{
-                      style: { color: '#0d47a1' }
-                    }}
-                  // options={getExperienceData}
-                  />
-                </Grid>
-              </Grid>
+              <InputControl
+                name="MobileNumber"
+                label="Mobile Number"
+                size="small"
+                error={errors.MobileNumber}
+                value={values.MobileNumber || ""}
+                onChange={handleInputChange}
+                variant="standard"
+                color="primary"
+                InputLabelProps={{
+                  style: { color: '#0d47a1' }
+                }}
+                inputProps={{
+                  maxLength: 10 // Set maxLength attribute to 2
+                }}
+              />
+            </div>
+            <InputControl
+              name="Experience"
+              type="number"
+              label="Experience"
+              error={errors.Experience}
+              size="small"
+              value={values.Experience || ""}
+              onChange={handleInputChange}
+              variant="standard"
+              color="primary"
+              inputProps={{
+                maxLength: 2 // Set maxLength attribute to 2
+              }}
+              InputLabelProps={{
+                style: { color: '#0d47a1' }
+              }}
+            />
+            <InputControl
+              name="CurrentCTC"
+              label="Current CTC"
+              size="small"
+              error={errors.CurrentCTC}
+              value={values.CurrentCTC || ""}
+              onChange={handleInputChange}
+              variant="standard"
+              color="primary"
+              InputLabelProps={{
+                style: { color: '#0d47a1' }
+              }}
+            />
+            <InputControl
+              name="ExpectedCTC"
+              label="Expected CTC"
+              size="small"
+              error={errors.ExpectedCTC}
+              value={values.ExpectedCTC || ""}
+              onChange={handleInputChange}
+              variant="standard"
+              color="primary"
+              InputLabelProps={{
+                style: { color: '#0d47a1' }
+              }}
+            />
+            <RadioGroupControl
+              default
+              name="Gender"
+              row
+              label="Gender"
+              error={errors.Gender}
+              value={values.Gender || ""}
+              helpertext={helperText}
+              onChange={handleRadioChange}
+              items={genders}
+              color="primary"
+              style={{ color: '#0d47a1' }}
+              InputLabelProps={{
+                style: { color: '#0d47a1' }
+              }}
+            />
 
-              <Grid container>
-                <Grid item xs={6}>
-                <InputControl
-                    name="CurrentCTC"
-                    label="Current CTC"
-                    size="small"
-                    error={errors.CurrentCTC}
-                    value={values.CurrentCTC || ""}
-                    onChange={handleInputChange}
-                    variant="standard"
-                    color="primary"
-                    InputLabelProps={{
-                      style: { color: '#0d47a1' }
-                    }}
-                  />
-                </Grid>
-                <Grid item xs={6}>
+            {recordForEdit === null ? (
+              <Autocomplete
+                multiple
+                disableCloseOnSelect
+                limitTags={2}
+                id="skills"
+                style={{ width: "105%" }}
+                onChange={handleCheckBox}
+                options={skills}
+                getOptionLabel={(options) => options.Skill_Name}
+                isOptionEqualToValue={(option, value) => option === value}
+                renderOption={(props, option, { selected }) => (
+                  <li {...props}>
+                    <Checkbox
+                      icon={icon}
+                      checkedIcon={checkedIcon}
+                      style={{ marginRight: 8 }}
+                      checked={selected}
+                    />
+                    {option.Skill_Name}
+                  </li>
+                )}
+                renderInput={(params) => (
                   <InputControl
-                    name="ExpectedCTC"
-                    label="Expected CTC"
-                    size="small"
-                    error={errors.ExpectedCTC}
-                    value={values.ExpectedCTC || ""}
-                    onChange={handleInputChange}
+                    {...params}
+                    label="Skills"
+                    placeholder="Languages"
+                    value={values.Skills || ""}
+                    error={errors.Skills}
                     variant="standard"
-                    color="primary"
-                    InputLabelProps={{
-
-                      style: { color: '#0d47a1' }
-                    }}
-                  />
-                </Grid>
-              </Grid>
-              <Grid container>
-                <Grid item xs={5}>
-              
-                  <RadioGroupControl
-                    default
-                    name="Gender"
-                     row
-                    label="Gender"
-                    error={errors.Gender}
-                    value={values.Gender || ""}
-                    helpertext={helperText}
-                    onChange={handleRadioChange}
-                    items={genders}
-                    color="primary"
-                    style={{ color: '#0d47a1' }}
                     InputLabelProps={{
                       style: { color: '#0d47a1' }
                     }}
                   />
-                </Grid>
-            
-              </Grid>
+                )}
+              />
 
-              {recordForEdit === null ? (
-                <Autocomplete
-                  multiple
-                  disableCloseOnSelect
-                  limitTags={2}
-                  id="skills"
-                  style={{ width: "105%" }}
-                  onChange={handleCheckBox}
-                  options={skills}
-                  // defaultValue={recordForEdit.Skills.split(',')}
-                  getOptionLabel={(options) => options.Skill_Name}
-                  isOptionEqualToValue={(option, value) => option === value}
-                  renderOption={(props, option, { selected }) => (
-                    <li {...props}>
-                      <Checkbox
-                        icon={icon}
-                        checkedIcon={checkedIcon}
-                        style={{ marginRight: 8 }}
-                        checked={selected}
-                      // onChange={handleCheckBox}
-                      // value={values.skilKls}
-                      />
-                      {option.Skill_Name}
-                    </li>
-                  )}
-                  renderInput={(params) => (
-                    <InputControl
-                      {...params}
-                      label="Skills"
-                      placeholder="Languages"
-                      value={values.Skills || ""}
-                      error={errors.Skills}
-                      variant="standard"
+
+            ) : (
+              <Autocomplete
+                multiple
+                id="skills"
+                disableCloseOnSelect
+                limitTags={2}
+                options={skills}
+                value={selectedSkills || ""}
+                style={{ width: "110%" }}
+                onChange={handleCheckBox}
+                getOptionLabel={(option) => option.Skill_Name}
+                renderOption={(props, option, { selected }) => (
+                  <li {...props}>
+                    <Checkbox
+                      icon={icon}
+                      checkedIcon={checkedIcon}
+                      style={{ marginRight: 8 }}
+                      checked={selected}
                       InputLabelProps={{
                         style: { color: '#0d47a1' }
                       }}
                     />
-                  )}
-                />
-
-                // <Autocomplete
-                //   multiple
-                //   id="skills"
-                //   disableCloseOnSelect
-                //   limitTags={2}
-                //   options={skills}
-                //   style={{ width: "110%" }}
-                //   onChange={handleCheckBox}
-                //   getOptionLabel={(option) => option.Skill_Name}
-                //   // value = {values.Skills}
-                //   isOptionEqualToValue={(option, value) => option=== value}
-
-                //   // defaultValue={ recordForEdit.Skills.split(',') || null }
-                //   renderInput={(params) => (
-                //     <TextField
-                //       {...params}
-                //       label="Skills"
-                //       placeholder="Languages"
-                //       value={values.Skills || ""}
-                //       error={errors.Skills}
-                //     />
-                //   )}
-                // />
-              ) : (
-                <Autocomplete
-                  multiple
-                  id="skills"
-                  disableCloseOnSelect
-                  limitTags={2}
-                  options={skills}
-                  value={selectedSkills || ""}
-                  style={{ width: "110%" }}
-                  onChange={handleCheckBox}
-                  getOptionLabel={(option) => option.Skill_Name}
-                  // isOptionEqualToValue={(option, value) =>option == value}
-                  // defaultValue={[recordsSkills]}
-                  renderOption={(props, option, { selected }) => (
-                    <li {...props}>
-                      <Checkbox
-                        icon={icon}
-                        checkedIcon={checkedIcon}
-                        style={{ marginRight: 8 }}
-                        checked={selected}
-                        InputLabelProps={{
-                          style: { color: '#0d47a1' }
-                        }}
-                      // onChange={handleCheckBox}
-                      // value={values.skilKls}
-                      />
-                      {option.Skill_Name}
-                    </li>
-                  )}
-                  renderInput={(params) => (
-                    <TextField
-                      {...params}
-                      label="Skills"
-                      placeholder="Languages"
-                    // value={values.Skills || ""}
-                    // error={errors.Skills}
-                    />
-                  )}
-                />)
-              }
-
-              {/* <br /> */}
-              {isDuplicate ? (
-                <p>
-                  Record Already Exist &nbsp;
-                  <Link to="/resumes" state={tempVal}>
-                    <u>View Records</u>
-                  </Link>
-                </p>
-              ) : (
-                ""
-              )}
-              <div className="flex justify-center">
-               <ButtonControl
-                  className={classes.btnControls}
-                  // classses={{ root: classes.root, label: classes.label }}
-                  text="Submit"
-                  type="submit"
-                />
-                &nbsp;&nbsp;
-                <ButtonControl
-                  // classes={{ root: classes.root, label: classes.label }}
-                  className={classes.btnControls}
-                  text="Reset"
-                  color="error"
-                  onClick={resetForm}
-                />
-                </div>
-          
-            </Grid>
-            <Grid item xs={2} className="flex justify-center " >
-              <div className="h-96 w-0.5 mt-20 mb-50 bg-gray-500"></div>
-            </Grid>
-            <Grid item xs={4}  >
-              <div
-                style={{
-                  marginTop: "18px",
-                  border: "2px solid #0d47a1",
-                  height: "450px",
-                  width: "auto",
-                  overflowY: "auto",
-                  //paddingLeft: "10px",
-                  marginBottom: "10px",
-                  boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2)",
-                }}
-                
-              >
-                {recordForEdit === null ? (
-                  isDocxFile ? (
-                    // <object data={recordForEdit === null ? resumeFile : recordForEdit.ResumeFile} width='700' height='550' ></object>
-                    // <DocViewer 
-                    // documents={selectedDocs}
-                    // // documents={
-                    // //   selectedDocs.map((item) => ({
-                    // //     uri: window.URL.createObjectURL(item),
-                    // //     fileName: item.name,
-                    // //   }))}
-                    //    pluginRenderers={DocViewerRenderers} />
-                    <DocxFileViewer file={recordForEdit === null ? selectedDocs : recordForEdit.ResumeFile} type="docx" />
-                  ) : (
-                    
-                     <PdfViewer scale={1.0}  pdf={recordForEdit === null ? resumeFile : recordForEdit.ResumeFile} />
-                  )
-                ) : (
-                  fileType = recordForEdit.ResumeFile.split('.')[1],
-                  fileType === 'docx' ? (
-                    // <object data={recordForEdit === null ? resumeFile : recordForEdit.ResumeFile} width='400' height='400' ></object>
-                    <DocxFileViewer file={recordForEdit === null ? resumeFile : recordForEdit.ResumeFile} type="docx" />
-                  ) : (
-                    <PdfViewer scale={2.2} width={300} pdf={recordForEdit === null ? resumeFile : recordForEdit.ResumeFile} />
-                    
-                  )
+                    {option.Skill_Name}
+                  </li>
                 )}
-                {/*{isDocxFile ? (
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    label="Skills"
+                    placeholder="Languages"
+                  />
+                )}
+              />)
+            }
+
+            {/* <br /> */}
+            {isDuplicate ? (
+              <p>
+                Record Already Exist &nbsp;
+                <Link to="/resumes" state={tempVal}>
+                  <u>View Records</u>
+                </Link>
+              </p>
+            ) : (
+              ""
+            )}
+            <div className="flex justify-center">
+              <ButtonControl
+                className={classes.btnControls}
+                text="Submit"
+                type="submit"
+              />
+              &nbsp;&nbsp;
+              <ButtonControl
+                className={classes.btnControls}
+                text="Reset"
+                color="error"
+                onClick={resetForm}
+              />
+            </div>
+
+          </div>
+          <div className="md:h-96 md:w-0.5 md:mt-20 md:m-40 md:mb-50 h-2 w-full mt-0 m-0 mb-0  bg-gray-500"></div>
+          {/* </Grid> */}
+          {/* <Grid item xs={4}  > */}
+          <div>
+            <div
+              style={{
+                marginTop: "18px",
+                border: "2px solid #0d47a1",
+                height: "450px",
+                width: "auto",
+                overflowY: "auto",
+                //paddingLeft: "10px",
+                marginBottom: "10px",
+                boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2)",
+              }}
+
+            >
+              {recordForEdit === null ? (
+                isDocxFile ? (
+                  // <object data={recordForEdit === null ? resumeFile : recordForEdit.ResumeFile} width='700' height='550' ></object>
+                  // <DocViewer 
+                  // documents={selectedDocs}
+                  // // documents={
+                  // //   selectedDocs.map((item) => ({
+                  // //     uri: window.URL.createObjectURL(item),
+                  // //     fileName: item.name,
+                  // //   }))}
+                  //    pluginRenderers={DocViewerRenderers} />
+                  <DocxFileViewer file={recordForEdit === null ? selectedDocs : recordForEdit.ResumeFile} type="docx" />
+                ) : (
+
+                  <PdfViewer scale={1.0} pdf={recordForEdit === null ? resumeFile : recordForEdit.ResumeFile} />
+                )
+              ) : (
+                fileType = recordForEdit.ResumeFile.split('.')[1],
+                fileType === 'docx' ? (
+                  // <object data={recordForEdit === null ? resumeFile : recordForEdit.ResumeFile} width='400' height='400' ></object>
+                  <DocxFileViewer file={recordForEdit === null ? resumeFile : recordForEdit.ResumeFile} type="docx" />
+                ) : (
+                  <PdfViewer scale={2.2} width={300} pdf={recordForEdit === null ? resumeFile : recordForEdit.ResumeFile} />
+
+                )
+              )}
+              {/*{isDocxFile ? (
                     console.log(resumeFile),
                     <object data={recordForEdit === null ? resumeFile : recordForEdit.ResumeFile} width='700' height='550' ></object>
                     // <DocxFileViewer file={recordForEdit === null ? resumeFile : recordForEdit.ResumeFile} />
                     ):(
                       <PdfViewer scale={2.2} width={300} pdf={recordForEdit === null ? resumeFile : recordForEdit.ResumeFile} />
                     )} */}
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  // paddingBottom: "25px",
-                  boxShadow: "0 10px 5px -5px rgba(0, 0, 0, 0.2)",
-                }}
-              >
-                <InputControl
-                  type="file"
-                  label=" "
-                  name="ResumeFile"
-                  size="small"
-                  value={values.resumeFile}
-                  onChange={handleFileChange}
-                  error={errors.ResumeFile}
-                  variant="standard"
-                  InputProps={{
-                    endAdornment: (
-                      <InputAdornment
-                        position="end"
-                        style={{ paddingRight: "10px" }}
-                      >
-                        <IconButton onClick={uploadFileHandler} disabled={fileUploaded ? true : false} edge="end">
-                          <FileUploadOutlinedIcon fontSize="medium" id="fileUploadICon"
-                            // style={{ paddingRight: "10px" }}
-                            // fontSize="small"
-                            color={fileUploaded ? "success" : "primary"}
-                          />
-                        </IconButton>
-                        {/* <IconButton onClick={deleteFileHandler}>
+            </div>
+            <div
+              style={{
+                display: "flex",
+                // paddingBottom: "25px",
+                boxShadow: "0 10px 5px -5px rgba(0, 0, 0, 0.2)",
+              }}
+            >
+              <InputControl
+                type="file"
+                label=" "
+                name="ResumeFile"
+                size="small"
+                value={values.resumeFile}
+                onChange={handleFileChange}
+                error={errors.ResumeFile}
+                variant="standard"
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment
+                      position="end"
+                      style={{ paddingRight: "10px" }}
+                    >
+                      <IconButton onClick={uploadFileHandler} disabled={fileUploaded ? true : false} edge="end">
+                        <FileUploadOutlinedIcon fontSize="medium" id="fileUploadICon"
+                          // style={{ paddingRight: "10px" }}
+                          // fontSize="small"
+                          color={fileUploaded ? "success" : "primary"}
+                        />
+                      </IconButton>
+                      {/* <IconButton onClick={deleteFileHandler}>
                               <DeleteOutlineOutlinedIcon
                                 // fontSize="small"
                                 color="error"
                               />
                             </IconButton> */}
-                      </InputAdornment>
-                    ),
-                  }}
-                />
-               
-              </div>
-            </Grid>
-          </Grid>
+                    </InputAdornment>
+                  ),
+                }}
+              />
+
+            </div>
+          </div>
+          {/* </Grid> */}
+          {/* </Grid> */}
         </Form>
       </div>
     </MainLayout>

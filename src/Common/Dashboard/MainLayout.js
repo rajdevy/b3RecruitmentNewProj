@@ -16,7 +16,7 @@ import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import Navbar from "../Navbar/Navbar";
 import { UserData } from "../../Util/session";
 import { ENUM_USERTYPE } from "../../Util/Enums";
-import "./Dashboard.css";
+// import "./Dashboard.css";
 import PopupComp from "../../components/PopupComp";
 import InputControl from "../../components/form-controls/InputControl";
 import AddNewSkill from "../AddNewSkill";
@@ -97,17 +97,19 @@ const MainLayout = (props) => {
       <Layout
         style={{
           minHeight: "100vh"
+
         }}
       >
         <Sider
-          style={{ background: "#f0f0f0" }}
+          // style={{ background: "#f0f0f0" }}
+          style={{ background: "white" }}
           collapsible
           collapsed={collapsed}
           onCollapse={(value) => setCollapsed(value)}
         >
           <Link to="/dashboard">
             <img
-              className={collapsed ? "logoImgSide" : "logoImg"}
+              // className={collapsed ? "logoImgSide" : "logoImg"}
               src={Logo}
               alt=""
             />
@@ -115,7 +117,8 @@ const MainLayout = (props) => {
           <Menu
             style={{
               marginTop: "20px",
-              background: "#f0f0f0",
+              // background: "#f0f0f0",
+              // background: "green",
               color: "#000",
               display: "flex",
               flexDirection: "column",
@@ -139,16 +142,19 @@ const MainLayout = (props) => {
           <Header
             style={{
               padding: 0,
-              background: colorBgContainer,
+              // background: colorBgContainer,
+              // background: "yellow",
             }}
           >
             <Navbar navHeader={navbarHeaderContent} />
           </Header>
           <Content
             style={{
-              margin: "0 5px",
-              background: "#f8f8f8",
-              overflowY: "scroll",
+              margin: "0 0 px",
+              // background: "red",
+                // background: "blue",
+
+              overflowY: "auto",
             }}
           >
             <div
@@ -157,8 +163,9 @@ const MainLayout = (props) => {
                 padding: "25px 0px",
                 minHeight: 360,
                 height: "90vh",
-                background: "#efeef1",
-
+                
+                // background: "#efeef1",
+                   background: "#0060B5",
                 // background: colorBgContainer,
               }}
             >
