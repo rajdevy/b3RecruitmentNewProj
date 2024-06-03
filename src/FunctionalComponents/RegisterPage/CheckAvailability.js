@@ -8,6 +8,8 @@ const CheckAvailability = () => {
   // Simulated API call to check availability
   const checkAvailability = async (id) => {
     debugger;
+
+    //raj
     setLoading(true);
     // Simulating network delay
     await new Promise((resolve) => setTimeout(resolve, 10000));
