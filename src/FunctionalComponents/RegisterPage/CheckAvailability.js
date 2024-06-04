@@ -1,22 +1,28 @@
 import React, { useState } from "react";
+import axios from "../../api/apiUrl";
 
 const CheckAvailability = () => {
   const [userId, setUserId] = useState("");
   const [isAvailable, setIsAvailable] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [available, setavailable] = useState();
 
   // Simulated API call to check availability
   const checkAvailability = async (id) => {
     debugger;
+    const UserId = id;
 
-    //raj
     setLoading(true);
     // Simulating network delay
-    await new Promise((resolve) => setTimeout(resolve, 10000));
+    await new Promise((resolve) => setTimeout(resolve, 0));
 
-    // Simulate an API response
-    const existingUserIds = ["user1", "user2", "user3"];
-    const available = !existingUserIds.includes(id);
+    axios.post("Recruiters/IsCheckUserExist", { UserId }).then((res) => {
+      console.log(res.data.IsCheckUserExist);
+      setavailable(res.data.IsCheckUserExist);
+      console.log(available);
+    });
+
+    console.log(available);
     setLoading(false);
     return available;
   };
@@ -27,7 +33,8 @@ const CheckAvailability = () => {
 
     if (newUserId) {
       const available = await checkAvailability(newUserId);
-      setIsAvailable(available);
+      console.log(available);
+      setIsAvailable(false);
     } else {
       setIsAvailable(null);
     }
@@ -42,10 +49,11 @@ const CheckAvailability = () => {
         value={userId}
         onChange={handleInputChange}
       />
+      <h1> hello{isAvailable}</h1>
       {loading ? (
         <p>Checking availability...</p>
       ) : (
-        isAvailable !== null && (
+        isAvailable && (
           <p className={isAvailable ? "text-green-500" : "text-red-500"}>
             {isAvailable ? "User ID is available!" : "User ID is taken!"}
           </p>

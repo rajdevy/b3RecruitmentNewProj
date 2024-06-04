@@ -9,6 +9,7 @@ import Register from "../FunctionalComponents/RegisterPage/Register";
 import PageNotFound from "../features/404Page/404Page";
 import AddNewResume from "../FunctionalComponents/ResumesDataTable/AddNewResume";
 import ChangePassword from "../Common/Navbar/ChangePassword";
+import CheckAvailability from "../FunctionalComponents/RegisterPage/CheckAvailability";
 
 function Router() {
   return (
@@ -23,8 +24,8 @@ function Router() {
       <Route path="/resumes" element={<ResumeContent />} />
       <Route path="/add-new-resume" element={<AddNewResume />} />
       <Route path="/change-password" element={<ChangePassword />} />
-
-    </Routes> 
+      <Route path="/CheckAvailability" element={<CheckAvailability />} />
+    </Routes>
   );
 }
 
