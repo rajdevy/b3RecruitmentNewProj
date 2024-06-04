@@ -38,14 +38,9 @@ const MainLayout = (props) => {
   const items = [
    
     getItem(
-      <p className="inline-block relative group group-hover:text-[#0087ca]">
-      <Link to="/dashboard" className="text-[#0087ca]">
+      <Link to="/dashboard">
         Dashboard
       </Link>
-      <span
-        className="block absolute w-full h-[2px] bg-[#0087ca] bottom-0 left-0 transform scale-x-0 transition-transform duration-700 ease-out group-hover:scale-x-100 origin-bottom-left"
-      />
-    </p>
      ,
       "1",
       <HomeOutlinedIcon />

@@ -404,8 +404,8 @@ function AddNewResume() {
           onSubmit={handleSubmit}
           className="flex flex-col md:flex-row justify-around"
         >
-          <div className="">
-            <div className="flex gap-2">
+          {/* <div className=" bg-red-300"> */}
+            <div className="grid grid-cols-2">
               <InputControl
                 label="First Name"
                 name="FirstName"
@@ -432,11 +432,8 @@ function AddNewResume() {
                   style: { color: '#0d47a1' }
                 }}
               />
-            </div>
 
 
-            {/* code strt by GS */}
-            <div className="flex gap-2">
               <InputControl
                 name="Email"
                 label="Email"
@@ -473,7 +470,7 @@ function AddNewResume() {
 
               {/* code end by GS */}
 
- 
+
               <InputControl
                 name="MobileNumber"
                 label="Mobile Number"
@@ -490,262 +487,268 @@ function AddNewResume() {
                   maxLength: 10 // Set maxLength attribute to 2
                 }}
               />
-            </div>
-            <InputControl
-              name="Experience"
-              type="number"
-              label="Experience"
-              error={errors.Experience}
-              size="small"
-              value={values.Experience || ""}
-              onChange={handleInputChange}
-              variant="standard"
-              color="primary"
-              inputProps={{
-                maxLength: 2 // Set maxLength attribute to 2
-              }}
-              InputLabelProps={{
-                style: { color: '#0d47a1' }
-              }}
-            />
-            <InputControl
-              name="CurrentCTC"
-              label="Current CTC"
-              size="small"
-              error={errors.CurrentCTC}
-              value={values.CurrentCTC || ""}
-              onChange={handleInputChange}
-              variant="standard"
-              color="primary"
-              InputLabelProps={{
-                style: { color: '#0d47a1' }
-              }}
-            />
-            <InputControl
-              name="ExpectedCTC"
-              label="Expected CTC"
-              size="small"
-              error={errors.ExpectedCTC}
-              value={values.ExpectedCTC || ""}
-              onChange={handleInputChange}
-              variant="standard"
-              color="primary"
-              InputLabelProps={{
-                style: { color: '#0d47a1' }
-              }}
-            />
-            <RadioGroupControl
-              default
-              name="Gender"
-              row
-              label="Gender"
-              error={errors.Gender}
-              value={values.Gender || ""}
-              helpertext={helperText}
-              onChange={handleRadioChange}
-              items={genders}
-              color="primary"
-              style={{ color: '#0d47a1' }}
-              InputLabelProps={{
-                style: { color: '#0d47a1' }
-              }}
-            />
 
-            {recordForEdit === null ? (
-              <Autocomplete
-                multiple
-                disableCloseOnSelect
-                limitTags={2}
-                id="skills"
-                style={{ width: "105%" }}
-                onChange={handleCheckBox}
-                options={skills}
-                getOptionLabel={(options) => options.Skill_Name}
-                isOptionEqualToValue={(option, value) => option === value}
-                renderOption={(props, option, { selected }) => (
-                  <li {...props}>
-                    <Checkbox
-                      icon={icon}
-                      checkedIcon={checkedIcon}
-                      style={{ marginRight: 8 }}
-                      checked={selected}
-                    />
-                    {option.Skill_Name}
-                  </li>
-                )}
-                renderInput={(params) => (
-                  <InputControl
-                    {...params}
-                    label="Skills"
-                    placeholder="Languages"
-                    value={values.Skills || ""}
-                    error={errors.Skills}
-                    variant="standard"
-                    InputLabelProps={{
-                      style: { color: '#0d47a1' }
-                    }}
-                  />
-                )}
+              <InputControl
+                name="CurrentCTC"
+                label="Current CTC"
+                size="small"
+                error={errors.CurrentCTC}
+                value={values.CurrentCTC || ""}
+                onChange={handleInputChange}
+                variant="standard"
+                color="primary"
+                InputLabelProps={{
+                  style: { color: '#0d47a1' }
+                }}
+              />
+              <InputControl
+                name="ExpectedCTC"
+                label="Expected CTC"
+                size="small"
+                error={errors.ExpectedCTC}
+                value={values.ExpectedCTC || ""}
+                onChange={handleInputChange}
+                variant="standard"
+                color="primary"
+                InputLabelProps={{
+                  style: { color: '#0d47a1' }
+                }}
+              />
+              <InputControl
+                name="Experience"
+                type="number"
+                label="Experience"
+                error={errors.Experience}
+                size="small"
+                value={values.Experience || ""}
+                onChange={handleInputChange}
+                variant="standard"
+                color="primary"
+                inputProps={{
+                  maxLength: 2 // Set maxLength attribute to 2
+                }}
+                InputLabelProps={{
+                  style: { color: '#0d47a1' }
+                }}
               />
 
 
-            ) : (
-              <Autocomplete
-                multiple
-                id="skills"
-                disableCloseOnSelect
-                limitTags={2}
-                options={skills}
-                value={selectedSkills || ""}
-                style={{ width: "110%" }}
-                onChange={handleCheckBox}
-                getOptionLabel={(option) => option.Skill_Name}
-                renderOption={(props, option, { selected }) => (
-                  <li {...props}>
-                    <Checkbox
-                      icon={icon}
-                      checkedIcon={checkedIcon}
-                      style={{ marginRight: 8 }}
-                      checked={selected}
+              
+{recordForEdit === null ? (
+                <Autocomplete
+                  multiple
+                  disableCloseOnSelect
+                  limitTags={2}
+                  id="skills"
+                  style={{ width: "105%" }}
+                  onChange={handleCheckBox}
+                  options={skills}
+                  getOptionLabel={(options) => options.Skill_Name}
+                  isOptionEqualToValue={(option, value) => option === value}
+                  renderOption={(props, option, { selected }) => (
+                    <li {...props}>
+                      <Checkbox
+                        icon={icon}
+                        checkedIcon={checkedIcon}
+                        style={{ marginRight: 8 }}
+                        checked={selected}
+                      />
+                      {option.Skill_Name}
+                    </li>
+                  )}
+                  renderInput={(params) => (
+                    <InputControl
+                      {...params}
+                      label="Skills"
+                      placeholder="Languages"
+                      value={values.Skills || ""}
+                      error={errors.Skills}
+                      variant="standard"
                       InputLabelProps={{
                         style: { color: '#0d47a1' }
                       }}
                     />
-                    {option.Skill_Name}
-                  </li>
-                )}
-                renderInput={(params) => (
-                  <TextField
-                    {...params}
-                    label="Skills"
-                    placeholder="Languages"
-                  />
-                )}
-              />)
-            }
+                  )}
+                />
 
-            {/* <br /> */}
-            {isDuplicate ? (
-              <p>
-                Record Already Exist &nbsp;
-                <Link to="/resumes" state={tempVal}>
-                  <u>View Records</u>
-                </Link>
-              </p>
-            ) : (
-              ""
-            )}
-            <div className="flex justify-center">
-              <ButtonControl
-                className={classes.btnControls}
-                text="Submit"
-                type="submit"
-              />
-              &nbsp;&nbsp;
-              <ButtonControl
-                className={classes.btnControls}
-                text="Reset"
-                color="error"
-                onClick={resetForm}
-              />
-            </div>
 
-          </div>
-          <div className="md:h-96 md:w-0.5 md:mt-20 md:m-40 md:mb-50 h-2 w-full mt-0 m-0 mb-0  bg-gray-500"></div>
-          {/* </Grid> */}
-          {/* <Grid item xs={4}  > */}
-          <div>
-            <div
-              style={{
-                marginTop: "18px",
-                border: "2px solid #0d47a1",
-                height: "450px",
-                width: "auto",
-                overflowY: "auto",
-                //paddingLeft: "10px",
-                marginBottom: "10px",
-                boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2)",
-              }}
-
-            >
-              {recordForEdit === null ? (
-                isDocxFile ? (
-                  // <object data={recordForEdit === null ? resumeFile : recordForEdit.ResumeFile} width='700' height='550' ></object>
-                  // <DocViewer 
-                  // documents={selectedDocs}
-                  // // documents={
-                  // //   selectedDocs.map((item) => ({
-                  // //     uri: window.URL.createObjectURL(item),
-                  // //     fileName: item.name,
-                  // //   }))}
-                  //    pluginRenderers={DocViewerRenderers} />
-                  <DocxFileViewer file={recordForEdit === null ? selectedDocs : recordForEdit.ResumeFile} type="docx" />
-                ) : (
-
-                  <PdfViewer scale={1.0} pdf={recordForEdit === null ? resumeFile : recordForEdit.ResumeFile} />
-                )
               ) : (
-                fileType = recordForEdit.ResumeFile.split('.')[1],
-                fileType === 'docx' ? (
-                  // <object data={recordForEdit === null ? resumeFile : recordForEdit.ResumeFile} width='400' height='400' ></object>
-                  <DocxFileViewer file={recordForEdit === null ? resumeFile : recordForEdit.ResumeFile} type="docx" />
-                ) : (
-                  <PdfViewer scale={2.2} width={300} pdf={recordForEdit === null ? resumeFile : recordForEdit.ResumeFile} />
+                <Autocomplete
+                  multiple
+                  id="skills"
+                  disableCloseOnSelect
+                  limitTags={2}
+                  options={skills}
+                  value={selectedSkills || ""}
+                  style={{ width: "110%" }}
+                  onChange={handleCheckBox}
+                  getOptionLabel={(option) => option.Skill_Name}
+                  renderOption={(props, option, { selected }) => (
+                    <li {...props}>
+                      <Checkbox
+                        icon={icon}
+                        checkedIcon={checkedIcon}
+                        style={{ marginRight: 8 }}
+                        checked={selected}
+                        InputLabelProps={{
+                          style: { color: '#0d47a1' }
+                        }}
+                      />
+                      {option.Skill_Name}
+                    </li>
+                  )}
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      label="Skills"
+                      placeholder="Languages"
+                    />
+                  )}
+                />)
+}
 
-                )
+              <RadioGroupControl
+                default
+                name="Gender"
+                row
+                label="Gender"
+                size="small"
+                error={errors.Gender}
+                value={values.Gender || ""}
+                helpertext={helperText}
+                onChange={handleRadioChange}
+                items={genders}
+                color="primary"
+                style={{ color: '#0d47a1' }}
+                InputLabelProps={{
+                  style: { color: '#0d47a1' }
+                }}
+              />
+
+              
+
+              {/* <br /> */}
+              {isDuplicate ? (
+                <p>
+                  Record Already Exist &nbsp;
+                  <Link to="/resumes" state={tempVal}>
+                    <u>View Records</u>
+                  </Link>
+                </p>
+              ) : (
+                ""
               )}
-              {/*{isDocxFile ? (
+              <div className="flex justify-center">
+                <ButtonControl
+                  className={classes.btnControls}
+                  text="Submit"
+                  type="submit"
+                />
+                &nbsp;&nbsp;
+                <ButtonControl
+                  className={classes.btnControls}
+                  text="Reset"
+                  color="error"
+                  onClick={resetForm}
+                />
+              </div>
+
+            </div>
+            <div className="md:h-96 md:w-0.5 md:mt-20 md:m-40 md:mb-50 h-2 w-full mt-0 m-0 mb-0  bg-gray-500"></div>
+            {/* </Grid> */}
+            {/* <Grid item xs={4}  > */}
+            <div>
+              <div
+                style={{
+                  marginTop: "18px",
+                  border: "2px solid #0d47a1",
+                  height: "450px",
+                  width: "auto",
+                  overflowY: "auto",
+                  //paddingLeft: "10px",
+                  marginBottom: "10px",
+                  boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2)",
+                }}
+
+              >
+                {recordForEdit === null ? (
+                  isDocxFile ? (
+                    // <object data={recordForEdit === null ? resumeFile : recordForEdit.ResumeFile} width='700' height='550' ></object>
+                    // <DocViewer 
+                    // documents={selectedDocs}
+                    // // documents={
+                    // //   selectedDocs.map((item) => ({
+                    // //     uri: window.URL.createObjectURL(item),
+                    // //     fileName: item.name,
+                    // //   }))}
+                    //    pluginRenderers={DocViewerRenderers} />
+                    <DocxFileViewer file={recordForEdit === null ? selectedDocs : recordForEdit.ResumeFile} type="docx" />
+                  ) : (
+
+                    <PdfViewer scale={1.0} pdf={recordForEdit === null ? resumeFile : recordForEdit.ResumeFile} />
+                  )
+                ) : (
+                  fileType = recordForEdit.ResumeFile.split('.')[1],
+                  fileType === 'docx' ? (
+                    // <object data={recordForEdit === null ? resumeFile : recordForEdit.ResumeFile} width='400' height='400' ></object>
+                    <DocxFileViewer file={recordForEdit === null ? resumeFile : recordForEdit.ResumeFile} type="docx" />
+                  ) : (
+                    <PdfViewer scale={2.2} width={300} pdf={recordForEdit === null ? resumeFile : recordForEdit.ResumeFile} />
+
+                  )
+                )}
+                {/*{isDocxFile ? (
                     console.log(resumeFile),
                     <object data={recordForEdit === null ? resumeFile : recordForEdit.ResumeFile} width='700' height='550' ></object>
                     // <DocxFileViewer file={recordForEdit === null ? resumeFile : recordForEdit.ResumeFile} />
                     ):(
                       <PdfViewer scale={2.2} width={300} pdf={recordForEdit === null ? resumeFile : recordForEdit.ResumeFile} />
                     )} */}
-            </div>
-            <div
-              style={{
-                display: "flex",
-                // paddingBottom: "25px",
-                boxShadow: "0 10px 5px -5px rgba(0, 0, 0, 0.2)",
-              }}
-            >
-              <InputControl
-                type="file"
-                label=" "
-                name="ResumeFile"
-                size="small"
-                value={values.resumeFile}
-                onChange={handleFileChange}
-                error={errors.ResumeFile}
-                variant="standard"
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment
-                      position="end"
-                      style={{ paddingRight: "10px" }}
-                    >
-                      <IconButton onClick={uploadFileHandler} disabled={fileUploaded ? true : false} edge="end">
-                        <FileUploadOutlinedIcon fontSize="medium" id="fileUploadICon"
-                          // style={{ paddingRight: "10px" }}
-                          // fontSize="small"
-                          color={fileUploaded ? "success" : "primary"}
-                        />
-                      </IconButton>
-                      {/* <IconButton onClick={deleteFileHandler}>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  // paddingBottom: "25px",
+                  boxShadow: "0 10px 5px -5px rgba(0, 0, 0, 0.2)",
+                }}
+              >
+                <InputControl
+                  type="file"
+                  label=" "
+                  name="ResumeFile"
+                  size="small"
+                  value={values.resumeFile}
+                  onChange={handleFileChange}
+                  error={errors.ResumeFile}
+                  variant="standard"
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment
+                        position="end"
+                        style={{ paddingRight: "10px" }}
+                      >
+                        <IconButton onClick={uploadFileHandler} disabled={fileUploaded ? true : false} edge="end">
+                          <FileUploadOutlinedIcon fontSize="medium" id="fileUploadICon"
+                            // style={{ paddingRight: "10px" }}
+                            // fontSize="small"
+                            color={fileUploaded ? "success" : "primary"}
+                          />
+                        </IconButton>
+                        {/* <IconButton onClick={deleteFileHandler}>
                               <DeleteOutlineOutlinedIcon
                                 // fontSize="small"
                                 color="error"
                               />
                             </IconButton> */}
-                    </InputAdornment>
-                  ),
-                }}
-              />
+                      </InputAdornment>
+                    ),
+                  }}
+                />
 
+              </div>
             </div>
-          </div>
-          {/* </Grid> */}
-          {/* </Grid> */}
+            {/* </Grid> */}
+            {/* </Grid> */}
         </Form>
       </div>
     </MainLayout>

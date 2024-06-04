@@ -23,7 +23,7 @@ export default function ChangePassword() {
     // z-[-1000]
     return (
 
-<> 
+<>
 
 <MainLayout  navbarHeaderContent={"Create New Password"} >
 <div style={{ backgroundColor: "#0060B5" }} className='flex-col flex  items-center justify-center h-full'>
