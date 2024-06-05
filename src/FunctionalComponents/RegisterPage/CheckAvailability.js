@@ -5,36 +5,31 @@ const CheckAvailability = () => {
   const [userId, setUserId] = useState("");
   const [isAvailable, setIsAvailable] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [available, setavailable] = useState();
 
-  // Simulated API call to check availability
   const checkAvailability = async (id) => {
-    debugger;
-    const UserId = id;
-
     setLoading(true);
-    // Simulating network delay
-    await new Promise((resolve) => setTimeout(resolve, 0));
 
-    axios.post("Recruiters/IsCheckUserExist", { UserId }).then((res) => {
-      console.log(res.data.IsCheckUserExist);
-      setavailable(res.data.IsCheckUserExist);
-      console.log(available);
-    });
+    try {
+      const response = await axios.post("Recruiters/IsCheckUserExist", {
+        UserId: id,
+      });
 
-    console.log(available);
+      setIsAvailable(!response.data.IsCheckUserExist);
+      console.log(isAvailable);
+    } catch (error) {
+      console.error("Error checking user availability:", error);
+      setIsAvailable(null);
+    }
+
     setLoading(false);
-    return available;
   };
 
-  const handleInputChange = async (event) => {
+  const handleInputChange = (event) => {
     const newUserId = event.target.value;
     setUserId(newUserId);
 
     if (newUserId) {
-      const available = await checkAvailability(newUserId);
-      console.log(available);
-      setIsAvailable(false);
+      checkAvailability(newUserId);
     } else {
       setIsAvailable(null);
     }
@@ -49,11 +44,10 @@ const CheckAvailability = () => {
         value={userId}
         onChange={handleInputChange}
       />
-      <h1> hello{isAvailable}</h1>
       {loading ? (
         <p>Checking availability...</p>
       ) : (
-        isAvailable && (
+        isAvailable !== null && (
           <p className={isAvailable ? "text-green-500" : "text-red-500"}>
             {isAvailable ? "User ID is available!" : "User ID is taken!"}
           </p>
